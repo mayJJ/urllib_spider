@@ -21,8 +21,8 @@ class SpiderMain:
         self.urls.add_new_url(root_url)
 #         把根url添加到new_url列表，这应该没什么问题。
                 
-        for x in range(100):
-#             100可以改成100,1000，都可以。不过单线程比较慢。之后会讲解异步爬取和多线程的。
+        for x in range(1000):
+#             1000随意改。不过单线程比较慢。之后会讲解异步爬取和多线程的。
             try:
                 new_url = self.urls.get_new_url() # 添加单个url
                 print('craw%d : %s' %(count, new_url))
