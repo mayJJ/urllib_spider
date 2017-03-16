@@ -15,9 +15,7 @@ class HtmlParser(object):
 #         DOM
         
         new_urls = set()
-        #   http://baike.baidu.com/item/Python
         # <a target="_blank" href="/view/592974.htm">解释器</a>  r"/view/\d+.htm"
-        # "http://user.qzone.qq.com/2297091173/mood"  
         links = soup.find_all('a', href=re.compile( r"/view/\d+.htm"))
         for link in links:
 #             print(link)
@@ -51,11 +49,11 @@ class HtmlParser(object):
         
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='utf-8')
         
-        #这里的方法名是get_new_url跟get_new_data,没有下划线开头，错误太low、太粗心！
+
         
-#         new_url = self._get_new_url(page_url, soup)
+
         new_url = self.get_new_url(page_url, soup)
-#         new_data = self._get_new_data(page_url, soup)
+
         new_data = self.get_new_data(page_url, soup)
         
         return new_url, new_data
