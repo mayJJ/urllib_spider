@@ -20,24 +20,24 @@ class SpiderMain:
 
                 
         for x in range(100):
-            new_url = self.urls.get_new_url() # 添加单个url
-            print('craw%d : %s' %(count, new_url))
-            html_cont = self.downloader.download(new_url)
+            try:
+                new_url = self.urls.get_new_url() # 添加单个url
+                print('craw%d : %s' %(count, new_url))
+                html_cont = self.downloader.download(new_url)
 
- 
 
-            new_urls,new_data = self.parser.parser(new_url, html_cont)
-            self.urls.add_new_urls(new_urls)  # 添加批量url
-            self.outputer.collect_data(new_data)
+
+                new_urls,new_data = self.parser.parser(new_url, html_cont)
+                self.urls.add_new_urls(new_urls)  # 添加批量url
+                self.outputer.collect_data(new_data)
                 
+            except AttributeError:
+                print('here is a bug, jump')
 
-              
+
             count = count+1
 
-        
-
-        self.outputer.output_data()
-             
+ self.outputer.output_data()
 
 
 
