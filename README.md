@@ -24,7 +24,7 @@ Now:  讲解结构了。
 
 url_manage.py: url 管理器。毕竟爬取的页面的过多，为了避免重复爬取，定义一个待爬取和一个已爬取的列表。
 html_downloader.py：页面下载器。
-html_parser.py: 页面解析器。这里用的re正则表达式和BeautifulSoup。建议大家有时间的把基本的正则学会，还是很快的。然后了解最基本的html和css的格式和内容。
+html_parser.py: 页面解析器。这里用的re正则表达式.建议大家有时间的把基本的正则学会，还是很快的。然后了解最基本的html和css的格式和内容。
 html_output.py: 页面输出器。
 spider_main: 主函数。调用其他的方法实现的。
 
