@@ -3,10 +3,9 @@ url输出器
 
 '''
 
+# 在这里, 熟悉html基本标签.看完文档,多观察几个页面去.
 import os
 
-#导包的时候要清楚你要导入的包及其作用，别乱导入，尤其是跟自己定义的变量名重复的时候，不然各种错误
-# from aifc import data
 
 class HtmlOutputer(object):
 
@@ -40,9 +39,6 @@ class HtmlOutputer(object):
          
         for data in self.datas:
             fout.write("<tr>")
-#             fout.write("<td>%s</td>" %data['url'].encode('utf-8'))
-#             fout.write("<td>%s</td>" %data['title'].encode('utf-8'))
-#             fout.write("<td>%s</td>" %data['summary'].encode('utf-8'))
 
             fout.write("<td>%s</td>"  %data['url'])
             fout.write("<td>%s</td>"  %data['title'])
