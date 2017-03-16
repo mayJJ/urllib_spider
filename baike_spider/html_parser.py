@@ -10,9 +10,8 @@ import urllib.parse
 
 class HtmlParser(object):
 
-        
+#         获取新的url。 易错点在于：新获取的url都是不完整的，所以要跟页面url拼接。才能找得到页面。
     def get_new_url(self, page_url, soup):
-#         DOM
         
         new_urls = set()
         # <a target="_blank" href="/view/592974.htm">解释器</a>  r"/view/\d+.htm"
@@ -26,18 +25,19 @@ class HtmlParser(object):
         
         return new_urls
     
+#         获取页面的标题和内容
     def get_new_data(self, page_url, soup):
         res_data = {}
 
         # url
         res_data['url'] = page_url
-        #<dd class="lemmaWgt-lemmaTitle-title"> <h1>Python</h1>
-        #
+        # <dd class="lemmaWgt-lemmaTitle-title"> <h1>Python</h1>
+        # class是 python 中的关键字，所以记得加上下划线 _
         title_node = soup.find('dd', class_="lemmaWgt-lemmaTitle-title")
         res_data['title'] = title_node.get_text()
+
         
         #<div class="lemma-summary" label-module="lemmaSummary">
-        #<a class="c_tx c_tx3 goDetail" title="2016年11月3日 15:10" href="http://user.qzone.qq.com/2297091173/mood/65d4ea88cae21a58f6ec0d00.1">
         summary_node = soup.find('div',class_="lemma-summary" )
         res_data['summary'] = summary_node.get_text()
                  
@@ -48,10 +48,7 @@ class HtmlParser(object):
             return
         
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='utf-8')
-        
-
-        
-
+       
         new_url = self.get_new_url(page_url, soup)
 
         new_data = self.get_new_data(page_url, soup)
